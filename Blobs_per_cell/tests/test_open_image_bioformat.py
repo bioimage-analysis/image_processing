@@ -2,9 +2,8 @@
 from Blobs_per_cell.scripts import open_image_bioformat as oib
 import numpy as np
 
-image = "/Users/Espenel/Desktop/analysis_geri/mCh-K370, GFP-actin, DECMA-Cy5, actin-AMCA-002.nd2"
-
-path = "/Users/Espenel/Desktop/analysis_geri/"
+image = "..."
+path = "..."
 
 
 

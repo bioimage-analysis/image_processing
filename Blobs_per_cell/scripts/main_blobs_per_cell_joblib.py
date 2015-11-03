@@ -4,9 +4,9 @@ from joblib import Parallel, delayed
 
 def main():
 
-    path = "/Users/Espenel/Desktop/analysis_geri/Rdecma 2/folder_name/experiment1"
-    path2 = "/Users/Espenel/Desktop/analysis_geri/Rdecma 2/folder_name/experiment2"
-    path3 = "/Users/Espenel/Desktop/analysis_geri/Rdecma 2/folder_name/experiment3"
+    path = ".../experiment1"
+    path2 = ".../experiment2"
+    path3 = ".../experiment3"
 
     path_list = [path, path2, path3]
 
