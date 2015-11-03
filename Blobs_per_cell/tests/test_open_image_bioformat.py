@@ -1,5 +1,5 @@
-from Find_spot_Ecad_Fotine.scripts
-import open_image_bioformat as oib
+
+from Blobs_per_cell.scripts import open_image_bioformat as oib
 import numpy as np
 
 image = "/Users/Espenel/Desktop/analysis_geri/mCh-K370, GFP-actin, DECMA-Cy5, actin-AMCA-002.nd2"
