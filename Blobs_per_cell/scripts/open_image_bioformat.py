@@ -160,6 +160,7 @@ def batch_analysis_bioformat(path, **kwargs):
 
     Parameters
     ----------
+    path : str
     kwargs : dict
         Additional keyword-argument to be pass to the function:
          - imageformat
@@ -202,6 +203,8 @@ def show_series_all (images, path, im, channel = 'channel0', **kwargs):
     Parameters
     ----------
 
+    images : ndarray
+    path : str
     channel: str
 
     kwargs : dict
@@ -227,6 +230,7 @@ def show_series_all (images, path, im, channel = 'channel0', **kwargs):
             channel_lst ={}
         else:
             pass
+
     nrows = np.int(np.ceil(np.sqrt(len(images))))
     ncols = np.int(len(images) // nrows +1 )
     imageformat= kwargs.get('imageformat', '.tif')
@@ -257,7 +261,7 @@ def show_series_all (images, path, im, channel = 'channel0', **kwargs):
 
     plt.show()
 
-    return len(axes.ravel()), nrows * ncols
+    #return len(axes.ravel()), nrows * ncols
 
 
 
@@ -268,6 +272,8 @@ def show_series_all_histo (images, im, channel = 'channel0', **kwargs):
 
     Parameters
     ----------
+    images : ndarray
+    path : str
     channel: str
     kwargs : dict
         Additional keyword-argument to be pass to the function:
@@ -295,9 +301,9 @@ def show_series_all_histo (images, im, channel = 'channel0', **kwargs):
     width, size = kwargs.get('size_fig', (6*ncols, 2*nrows))
 
     fig, axes = plt.subplots(nrows, ncols*2, figsize=(width, size))
+
     for img, n in zip(images, range(len(images))):
         for x in range(len(channels)):
-
             channel_lst[channels[x]] = img[:,:,x]
 
         ch = channel_lst.get(channel)
@@ -317,8 +323,8 @@ def show_series_all_histo (images, im, channel = 'channel0', **kwargs):
             fig.delaxes(ax)
 
     fig.set_tight_layout(True)
-    plt.show()
-    return len(axes.ravel()), nrows * ncols
+    #plt.show()
+    #return len(axes.ravel()), nrows * ncols
 
 
 def show_chunk_series_all_histo(images, path, im, **kwargs):
@@ -328,6 +334,8 @@ def show_chunk_series_all_histo(images, path, im, **kwargs):
 
     Parameters
     ----------
+    images : ndarray
+    path : str
     kwargs : dict
         Additional keyword-argument to be pass to the function:
          - size_chunk
@@ -364,3 +372,52 @@ def show_chunk_series_all_histo(images, path, im, **kwargs):
             #plt.show()
 
     return chunks
+
+def split_channels (image, path, im, **kwargs):
+
+    """Split all the channels
+
+    Parameters
+    ----------
+    images : ndarray
+    path : str
+
+    Returns
+    ----------
+
+
+
+    """
+
+    dct = image_info(im[0])
+    num_channel = dct["channels"]
+    channels = ['channel{0}'.format(x) for x in range (num_channel)]
+    channel_lst ={}
+
+
+    channel_lst ={}
+    for x in range(num_channel):
+        channel_lst[channels[x]] = image[:,:,x]
+
+    nrows = np.int(np.ceil(np.sqrt(len(channel_lst))))
+    ncols = np.int(len(channel_lst) // nrows)
+    #imageformat= kwargs.get('imageformat', '.tif')
+    #filename=[f for f in os.listdir(path) if f.endswith(imageformat)]
+    titles = kwargs.pop('titles', 'x')
+    width, size = kwargs.get('size_fig', (5*ncols, 5*nrows))
+    fig, axes = plt.subplots(nrows, ncols, figsize=(width, size))
+
+    for label, n, ax in zip(sorted(channel_lst.keys()), range(len(channel_lst)), axes.ravel()):
+        i = n // ncols
+        j = n % ncols
+        axes[i, j].imshow(channel_lst[label],
+                          interpolation='nearest', cmap='gray')
+        ax.set_title("\n".join(wrap(str(label), width=20)))
+
+    for ax in axes.ravel():
+
+        if not (len(ax.images)):
+            fig.delaxes(ax)
+
+    fig.set_tight_layout(True)
+    #plt.show()
