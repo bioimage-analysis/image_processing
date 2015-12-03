@@ -16,7 +16,7 @@ This repository contains few image processing module that I wrote, Blobs_per_cel
  4. Circle the blobs it found
  5. Plot and save results as a box plot using pandas package
 
- 6. It also includes [blobs_per_cells_click](https://github.com/cespenel/image_processing/blob/master/Blobs_per_cell/scripts/blobs_per_cell_click.py) is very similar to blobs_per_cell put can measure click events on the image:
+ 6. It also includes [blobs_per_cells_click](https://github.com/cespenel/image_processing/blob/master/Blobs_per_cell/scripts/blobs_per_cell_click.py) which is very similar to blobs_per_cell put can measure click events on the image:
  * Extract the number of cells by measuring click events
  * Do some image processing
  * Extract the amount of blobs
