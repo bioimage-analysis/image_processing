@@ -47,5 +47,6 @@ I highly recommend installing a scientific Python distribution such as Anaconda 
 * [matplotlib](http://matplotlib.org/), plotting in Python
 * [Pandas](http://pandas.pydata.org/), data-frames for Python, handles the majority of data-structures  
 * [scikit-image](http://scikit-image.org/), used for image processing
+* [OpenCV](http://opencv.org//), used for image processing
 
 
