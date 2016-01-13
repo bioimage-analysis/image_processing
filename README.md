@@ -1,6 +1,6 @@
 ## Repository overview
 
-This repository contains few image processing module that I wrote, Blobs_per_cell and membrane_accumulation were used to do the analysis of a paper that was submited resently in JCS and ImageAlignment is use in the Stanford imaging facility. For all these modules I made a notebook in order to have a better understanding on how they work. 
+This repository contains few image processing modules that I wrote, Blobs_per_cell and membrane_accumulation were used to perform the image analysis of a paper published in [JCS](http://jcs.biologists.org/content/early/2016/01/08/jcs.173674) and ImageAlignment is use in the Stanford imaging facility. For all these modules I made a notebook in order to have a better understanding on how they work. 
 
 1. All these modules includes an [open_image_bioformat](https://github.com/cespenel/image_processing/blob/master/Blobs_per_cell/scripts/open_image_bioformat.py) use python_bioformat package to allow to work with different image format, here is what it should be able to do:
  1. Beginning and ending the javabridge to work python_bioformat
